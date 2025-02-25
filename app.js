@@ -3,12 +3,14 @@ import {PORT} from './config/env.js';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import suscription from './routes/post.route.js';
+import errorMiddleware from './middlewares/error.middlewares.js';
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/suscription', suscription);
+app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
