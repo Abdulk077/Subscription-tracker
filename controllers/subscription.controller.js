@@ -4,6 +4,7 @@ import { SERVER_URL } from "../config/env.js";
 
 export const createSubscription = async (req, res, next) => {
   try {
+    // On Advance Version of this Api we aslo using payment gatway we check that the payment is succesfull or not and then do further  processing
     const subscription = await Subscription.create({
       ...req.body,
       user: req.user._id,
